@@ -9,4 +9,4 @@
 
 ## workflow
 
-![appgif](gif1400kib.gif)
+![appgif](gif2400kib.gif)
