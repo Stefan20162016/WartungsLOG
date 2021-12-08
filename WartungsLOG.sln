@@ -16,6 +16,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{D01DCAF3-B2B3-4B73-BFBD-0B0450FB5B7C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\WartungsLOGdev\Documentation\Documentation_WartungsLOG.pdf = ..\..\..\Desktop\WartungsLOGdev\Documentation\Documentation_WartungsLOG.pdf
+		..\..\..\Desktop\WartungsLOGdev\Documentation\B2C\stepbystep\app_screenshots\gif1400kib.gif = ..\..\..\Desktop\WartungsLOGdev\Documentation\B2C\stepbystep\app_screenshots\gif1400kib.gif
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stepbystep", "stepbystep", "{69E2E3CF-0DDF-4940-9C52-285B49C3EBB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +187,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69E2E3CF-0DDF-4940-9C52-285B49C3EBB7} = {D01DCAF3-B2B3-4B73-BFBD-0B0450FB5B7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A57083-0F56-47EC-B88D-9028B83A8222}
