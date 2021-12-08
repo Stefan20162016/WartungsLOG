@@ -5,8 +5,8 @@
 
 
 
-- PDF step by step Documentation to setup Azure Backend: [Docu.pdf](Documentation/Documentation_WartungsLOG.pdf)
+- PDF step by step Documentation to setup Azure Backend: [Docu.pdf](Documentation_WartungsLOG.pdf)
 
 ## workflow
 
-![appgif](Documentation/gif1400kib.gif)
+![appgif](gif1400kib.gif)
