@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WartungsLOG.Android", "Wart
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WartungsLOG.iOS", "WartungsLOG.iOS\WartungsLOG.iOS.csproj", "{8B1DBBD4-A9AA-44BF-B847-1451F4113476}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WartungsLOG", "WartungsLOG\WartungsLOG.csproj", "{DDB9005C-D8D5-4F34-B9D2-48C84226965C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WartungsLOG", "WartungsLOG\WartungsLOG.csproj", "{DDB9005C-D8D5-4F34-B9D2-48C84226965C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{673B5A36-D81C-4FCB-AAA4-A83A9A4BBF7C}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
