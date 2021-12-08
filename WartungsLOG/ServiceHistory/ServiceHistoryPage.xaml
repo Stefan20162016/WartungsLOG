@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:servicehistory="clr-namespace:WartungsLOG.ServiceHistory;assembly=WartungsLOG"
+             xmlns:myconverter="clr-namespace:WartungsLOG.MyConverter"
+             xmlns:fonts="clr-namespace:WartungsLOG.Fonts"
+             x:Class="WartungsLOG.ServiceHistory.ServiceHistoryPage"
+             x:DataType="servicehistory:ServiceHistoryViewModel"
+             Title="Service History Page "          
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <myconverter:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        
+            <Grid>
+        
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--BoxView HeightRequest="200" HorizontalOptions="FillAndExpand" BackgroundColor="CornflowerBlue"></BoxView-->
+                <Frame  BackgroundColor="DeepSkyBlue" Padding="5" CornerRadius="45">
+                    <StackLayout Padding="5">
+                        <Label Text="Service History:" HorizontalTextAlignment="Center" TextColor="White" FontSize="Medium"/>
+                    <Button Text="Eintrag hinzufügen" CornerRadius="15" BackgroundColor="LightSkyBlue" FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type servicehistory:ServiceHistoryViewModel}}, Path=NavigateToAddEntryCommand}" HorizontalOptions="Center" >
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Playlist_add }" Color="Black"   />
+                        </Button.ImageSource>
+                    </Button>
+                </StackLayout>
+                </Frame>
+                
+                <StackLayout Grid.Row="1" Padding="2" VerticalOptions="End" BackgroundColor="Gray" Opacity="1.0">
+                    <StackLayout Orientation="Horizontal">
+                    <Label Text="KFZ:" TextColor="White"></Label>
+                    <Label Text="{Binding StaticVehicleProperty.Kennzeichen}" FontSize="Subtitle" TextColor="White" Padding="0"></Label>
+                    </StackLayout>
+                    
+                    <Label Text="{Binding StaticVehicleProperty.Description}" FontSize="Subtitle" TextColor="White"></Label>
+                    <StackLayout Orientation="Horizontal">
+                    <Label HorizontalOptions="Start" Text="Datum |" TextColor="White"></Label>
+                    <Label HorizontalOptions="Start" Text="Kilometer |" TextColor="White"></Label>
+                    <Label HorizontalOptions="Start" Text="Beschreibung" TextColor="White"></Label>
+                    </StackLayout>
+                </StackLayout>
+                
+                <Image Grid.Row="1" HorizontalOptions="End" Opacity="1.0" HeightRequest="75" Source="{Binding StaticVehicleProperty.ImageThumbData, Converter={StaticResource ByteArrayToImageSourceConverter}} " />
+
+
+            <CollectionView SelectionMode="Single" Grid.Row="2" ItemsSource="{Binding ServiceHistoryRecordCollection}">
+                    <CollectionView.ItemTemplate>
+                        
+                        <DataTemplate x:DataType="servicehistory:ServiceHistoryRecord">
+
+                        <SwipeView BackgroundColor="White" >
+                            <SwipeView.RightItems >
+                                <SwipeItems >
+                                    <SwipeItem Text="Löschen" BackgroundColor="Red"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type servicehistory:ServiceHistoryViewModel}}, Path=DeleteServiceHistoryCommand}" CommandParameter="{Binding}">
+                                        <SwipeItem.IconImageSource>
+                                            <FontImageSource FontFamily="awe"  Glyph="{x:Static fonts:FontAwesome.TrashAlt}" Color="White"   />
+                                        </SwipeItem.IconImageSource>
+                                    </SwipeItem>
+
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                        
+
+
+                        <Grid HeightRequest="52" Padding="4" RowDefinitions="Auto" ColumnDefinitions="Auto,Auto,Auto">
+                                <Label Grid.Column="0" Text="{Binding Date}"         TextColor="Black" FontSize="Small" />
+                            <Label Grid.Column="1" Text="{Binding Kilometerstand}"   TextColor="Black" FontSize="Small" />
+                            <Label Grid.Column="2"  HorizontalOptions="End" Text="{Binding Description}" 
+                                                                                     TextColor="Black" FontSize="Small" />
+                                <!--BoxView Grid.Column="3" WidthRequest="25" HeightRequest="25" BackgroundColor="red"></BoxView-->
+                                <!--Image Grid.Column="3" HeightRequest="25" WidthRequest="25" Source="{Binding ImageThumbData, Converter={StaticResource ByteArrayToImageSourceConverter}}">
+                                </Image-->
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                     Command="{Binding Source={RelativeSource 
+                                     AncestorType={x:Type servicehistory:ServiceHistoryViewModel}}, 
+                                     Path=NavigateToServiceRecordDetailCommand}"
+                                     CommandParameter="{Binding}"/>
+                                </Grid.GestureRecognizers>   
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                    </CollectionView.ItemTemplate>
+           
+       </CollectionView>
+                
+            <StackLayout Grid.Row="2" IsVisible="{Binding IsBusy}" BackgroundColor="Black" Opacity="0.8" >
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}"  Color="white" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="Loading ..." FontSize="Title" TextColor="White"    HorizontalOptions="Center" VerticalOptions="Center" />
+            </StackLayout>
+                
+
+        </Grid>
+       
+        </ContentPage.Content>
+</ContentPage>

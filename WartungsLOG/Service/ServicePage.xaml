@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:service="clr-namespace:WartungsLOG.Service"
+             xmlns:myconverter="clr-namespace:WartungsLOG.MyConverter"
+             xmlns:fonts="clr-namespace:WartungsLOG.Fonts"
+             x:Class="WartungsLOG.Service.ServicePage"
+             x:DataType="service:ServiceViewModel"
+             Title="{Binding Title}"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <myconverter:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+   
+    <ScrollView>
+        <Grid>
+            <Grid RowDefinitions="Auto,Auto,*">
+                
+                
+                <StackLayout Grid.Row="1">
+                    <Frame BackgroundColor="DeepSkyBlue" Padding="8" CornerRadius="45">
+                        <StackLayout>
+                            <Label Text="Service Details:" HorizontalTextAlignment="Center" TextColor="White" FontSize="Medium"/>
+                            <Button Text="Eintrag hinzufügen" CornerRadius="15" BackgroundColor="LightSkyBlue" FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type service:ServiceViewModel}}, Path=NavigateToAddEntryCommand} " HorizontalOptions="Center" >
+                                <Button.ImageSource>
+                                    <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Build }" Color="Black"   />
+                                </Button.ImageSource>
+                            </Button>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Padding="1" VerticalOptions="End" BackgroundColor="Gray" Opacity="1" Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal">
+                            <Label FontSize="Subtitle" Text="{Binding DatumProperty}"  TextColor="White"/>
+                            <Label FontSize="Subtitle" Text="{Binding KmProperty}" TextColor="White"/>
+                        <Label FontSize="Subtitle" Text="km" TextColor="White"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <!--Label FontSize="Subtitle" Text="Beschreibung:" TextColor="White"/-->
+                            <Label FontSize="Subtitle" Text="{Binding BeschreibungProperty}" TextColor="White"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                
+                <CollectionView SelectionMode="Single" Grid.Row="2" ItemsSource="{Binding ServiceCollectionProperty}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="service:ServiceRecord">
+
+                            <SwipeView BackgroundColor="White">
+                                <SwipeView.RightItems>
+                                    <SwipeItems >
+                                        <!--SwipeItem Text="Editieren" BackgroundColor="LightGreen"
+                       Command="{Binding Source={RelativeSource AncestorType={x:Type service:ServiceViewModel}}, Path=EditServiceCommand}" CommandParameter="{Binding}" /-->
+                                        <SwipeItem Text="Löschen" BackgroundColor="Red"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type service:ServiceViewModel}}, Path=DeleteServiceCommand}" CommandParameter="{Binding}">
+                                            <SwipeItem.IconImageSource>
+                                                <FontImageSource FontFamily="awe"  Glyph="{x:Static fonts:FontAwesome.TrashAlt}" Color="White"   />
+                                            </SwipeItem.IconImageSource>
+                                        </SwipeItem>
+
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                
+                            <Grid Padding="10" RowDefinitions="Auto" ColumnDefinitions="*, Auto">
+                                <Label VerticalOptions="Start" Grid.Column="0" Text="{Binding Description}"/>
+                                
+                                <Image Grid.Column="1" VerticalOptions="Start" Aspect="AspectFit"  Source="{Binding ImageThumbData, Converter={StaticResource ByteArrayToImageSourceConverter}}" BackgroundColor="Azure"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type service:ServiceViewModel}}, Path=NavigateToServicePictureCommand}" CommandParameter="{Binding}"/>
+                                </Grid.GestureRecognizers>
+                                
+                            </Grid>
+
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <StackLayout Grid.Row="2" IsVisible="{Binding IsBusy}" BackgroundColor="black" Opacity="0.8" >
+
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"  Color="white" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Label Text="Loading ..." FontSize="Title" TextColor="White"    HorizontalOptions="Center" VerticalOptions="Center" />
+                </StackLayout>
+
+
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

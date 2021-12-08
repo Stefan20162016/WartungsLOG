@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:select="clr-namespace:WartungsLOG.Select;assembly=WartungsLOG"
+             xmlns:logon="clr-namespace:WartungsLOG.LogOn;assembly=WartungsLOG"
+             xmlns:fonts="clr-namespace:WartungsLOG.Fonts"
+             xmlns:converter="clr-namespace:WartungsLOG.MyConverter"
+             x:Class="WartungsLOG.AppShell"
+       
+             BackgroundColor="DeepSkyBlue"      
+             >
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout Padding="10" BackgroundColor="DeepSkyBlue">
+                <Label FontSize="Large" TextColor="White" FontAttributes="Bold">Wartungs Log Buch</Label>
+                <Image Aspect="AspectFit" Source="{converter:ImageResourceExtension WartungsLOG.Bilder.car_thumb.png}" />
+            </StackLayout>
+        </DataTemplate>
+       
+    </Shell.FlyoutHeaderTemplate>
+
+
+    <ShellContent Title="Log in / Log out" ContentTemplate="{DataTemplate logon:LoginPage }" >
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="awe"  Glyph="{x:Static fonts:FontAwesome.User }" Color="Black"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+    
+    <ShellContent Title="KFZ Liste" ContentTemplate="{DataTemplate select:SelectVehiclePage}">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Directions_car }" Color="Black"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout Padding="10" BackgroundColor="DeepSkyBlue">
+                <Label FontSize="Large" TextColor="White" FontAttributes="Bold" Text=""/>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+
+</Shell>

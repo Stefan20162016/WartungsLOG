@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:select="clr-namespace:WartungsLOG.Select"
+             x:Class="WartungsLOG.Select.AddVehiclePage"
+             x:DataType="select:AddVehicleViewModel"
+             >
+    
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            
+            <Frame BackgroundColor="#2196F3" Padding="10" CornerRadius="0">
+                <Label Text="Neues Fahrzeug anlegen:" HorizontalTextAlignment="Center" TextColor="White" FontSize="Subtitle"/>
+            </Frame>
+            
+            <Label Text="Kennzeichen eingeben:" HorizontalOptions="Center" />
+            <Entry Placeholder="WOR AB 123"  Text="{Binding KennzeichenProperty, Mode=TwoWay}" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" MaxLength="400" />
+            <Label Text="Beschreibung:" HorizontalOptions="Center"/>
+            <!--Entry Placeholder="Beschreibung" IsSpellCheckEnabled="False" Text="{Binding DescriptionProperty, Mode=TwoWay}" HeightRequest="150"  BackgroundColor="AliceBlue"   /-->
+            <Editor Placeholder="Beschreibung" IsSpellCheckEnabled="False" Text="{Binding DescriptionProperty, Mode=TwoWay}" HeightRequest="100"  BackgroundColor="AliceBlue" MaxLength="1000"></Editor>
+            
+            <!--  TAKE PICTURE -->
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="select pic" Command="{Binding OpenGalleryCommand}"/>
+                <Button Text="take pic" Command="{Binding OpenCameraCommand}"/>
+
+                <Label Text="{Binding FilesizeProperty}" />
+            </StackLayout>
+
+                <Button Text="Dieses Fahrzeug hinzufuegen" Command="{Binding Source={RelativeSource AncestorType={x:Type select:AddVehicleViewModel}}, Path=AddNewVehicleCommand}" BackgroundColor="DeepSkyBlue"/>
+
+
+                <Image MinimumHeightRequest="400" Aspect="AspectFit" Source="{Binding ImageProperty}"/>
+
+
+            
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

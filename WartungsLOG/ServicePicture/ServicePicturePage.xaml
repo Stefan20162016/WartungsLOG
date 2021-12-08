@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:servicepic="clr-namespace:WartungsLOG.ServicePicture;assembly=WartungsLOG"
+             xmlns:myconverter="clr-namespace:WartungsLOG.MyConverter"
+             xmlns:util="clr-namespace:WartungsLOG.Utils"
+             xmlns:fonts="clr-namespace:WartungsLOG.Fonts"
+             x:Class="WartungsLOG.ServicePicture.ServicePicturePage"
+             x:DataType="servicepic:ServicePictureViewModel"
+             Title="{Binding Title}"
+             >
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <myconverter:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- also setting heighrequest much higher works with scrolling -->
+
+   
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem Command="{Binding ShareMeCommand}"  Text="share"  >
+            <ToolbarItem.IconImageSource>
+                <!--FontImageSource  FontFamily="mat"  Glyph="{x:Static fonts:Material.Share }" Color="Black"   /-->
+                <FontImageSource x:Name="toolbarfontimage"  FontFamily="mat"  Glyph="{x:Static fonts:Material.Share}" Color="Black"   />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Text="" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    
+    <ContentPage.Content>
+        
+            <StackLayout Padding="0" VerticalOptions="Center">
+            <util:PinchToZoomContainer>
+            <util:PinchToZoomContainer.Content>
+                        <Image MinimumHeightRequest="500" Aspect="AspectFit"  Source="{Binding ServicePictureRecordProperty.ImageData, Converter={StaticResource ByteArrayToImageSourceConverter}}" />
+                    </util:PinchToZoomContainer.Content>
+            </util:PinchToZoomContainer>
+
+            
+        
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
+    
+    
+    
+    

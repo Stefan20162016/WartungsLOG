@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             xmlns:select="clr-namespace:WartungsLOG.Select"
+             xmlns:myconverter="clr-namespace:WartungsLOG.MyConverter"
+             xmlns:fonts="clr-namespace:WartungsLOG.Fonts"
+             
+             x:Class="WartungsLOG.Select.SelectVehiclePage"
+             x:DataType="select:SelectViewModel"
+             Title="{Binding Title}"
+             >
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <myconverter:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--ScrollView-->
+        <StackLayout VerticalOptions="Start">
+        <Frame BackgroundColor="DeepSkyBlue" Padding="14" CornerRadius="45">
+            <!-- #2196F3-->
+            <StackLayout>
+            <Label Text="KFZ Liste" HorizontalTextAlignment="Center" TextColor="White" FontSize="Medium"/>
+                <Button Text="KFZ hinzufügen" CornerRadius="15" HorizontalOptions="Center" BackgroundColor="LightSkyBlue" FontAttributes="Bold" Command="{Binding Source={RelativeSource AncestorType={x:Type select:SelectViewModel}}, Path=NavigateToAddVehicleCommand}">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Add_circle }" Color="Black"   />
+                    </Button.ImageSource>
+
+                </Button>
+            </StackLayout>
+        </Frame>
+            
+        <Grid>
+        
+            <CollectionView ItemsSource="{Binding VehiclesCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="select:Vehicle">
+
+                        <SwipeView BackgroundColor="White" >
+                            <SwipeView.RightItems >
+                                <SwipeItems >
+                                    <SwipeItem Text="Löschen" BackgroundColor="Red"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type select:SelectViewModel}}, Path=DeleteVehicleCommand}" CommandParameter="{Binding}">
+                                        <SwipeItem.IconImageSource>
+                                            <FontImageSource FontFamily="awe"  Glyph="{x:Static fonts:FontAwesome.TrashAlt}" Color="White"   />
+                                        </SwipeItem.IconImageSource>
+                                    </SwipeItem>
+
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Grid Padding="5" >
+                                <BoxView  BackgroundColor="White" HorizontalOptions="FillAndExpand" HeightRequest="355"/>
+
+                                <Image Aspect="AspectFit" HorizontalOptions="FillAndExpand" 
+                               Source="{Binding ImageThumbData, Converter={StaticResource ByteArrayToImageSourceConverter}}"/>
+
+                                <StackLayout Padding="5" VerticalOptions="End" BackgroundColor="LightSkyBlue" Opacity="0.75">
+                                    <Label Text="{Binding Kennzeichen}" TextColor="Black" FontAttributes="Bold"     HorizontalOptions="Center"/>
+                                    <Label Text="{Binding Description}" TextColor="Black" HorizontalOptions="Center"   />
+                                </StackLayout>
+                                
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type select:SelectViewModel}}, Path=NavigateToVehicleCommand}" CommandParameter="{Binding}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+                <StackLayout IsVisible="{Binding IsBusy}" BackgroundColor="black" Opacity="0.8" >
+
+                    <ActivityIndicator IsRunning="{Binding IsBusy}"  Color="white" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Label Text="Loading ..." FontSize="Title" TextColor="White"    HorizontalOptions="Center" VerticalOptions="Center" />
+                </StackLayout>
+
+
+            </Grid>
+    </StackLayout>
+    <!--/ScrollView-->
+</ContentPage>

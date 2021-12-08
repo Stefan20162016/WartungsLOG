@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:service="clr-namespace:WartungsLOG.Service"
+             xmlns:util="clr-namespace:WartungsLOG.Utils"
+             xmlns:fonts="clr-namespace:WartungsLOG.Fonts"
+             x:Class="WartungsLOG.Service.AddDetailEntryPage"
+             x:DataType="service:AddDetailEntryViewModel"
+             Title="{Binding Title}"
+             >
+    <ContentPage.Content>
+
+        <ScrollView>
+        
+        <StackLayout >
+
+            
+
+            <Editor Placeholder="Beschreibung" IsSpellCheckEnabled="False" Text="{Binding ServiceRecordProperty.Description, Mode=TwoWay}" HeightRequest="70"  BackgroundColor="AliceBlue" MaxLength="1000" ></Editor>
+
+
+
+
+                <StackLayout Orientation="Horizontal" HeightRequest="55">
+                    <Button Text="from gallery" Command="{Binding OpenGalleryCommand}">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Add_a_photo }" Color="Black"   />
+                        </Button.ImageSource>
+                    </Button>
+
+                    
+                    <Button Text="from camera" Command="{Binding OpenCameraCommand}">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Add_a_photo }" Color="Black"   />
+                        </Button.ImageSource>
+                    </Button>
+
+
+                    
+            
+        </StackLayout>
+                
+                <Button Text="Diesen Eintrag hinzufügen" Command="{Binding NavigateToSaveCommand}" IsEnabled="{Binding ToggleUploadButtonProperty}" BackgroundColor="DeepSkyBlue"  HorizontalOptions="Center" >
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Save }" Color="White"   />
+                    </Button.ImageSource>
+                </Button>
+
+            
+        <util:PinchToZoomContainer>
+            <util:PinchToZoomContainer.Content>
+                <!--util:PanContainer-->
+                <Image MinimumHeightRequest="300" Aspect="AspectFit" Source="{Binding ImageProperty}"/>
+                <!-- maybe AspectFit -->
+                <!--/util:PanContainer-->
+            </util:PinchToZoomContainer.Content>
+        </util:PinchToZoomContainer>
+            
+        
+        </StackLayout>
+
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

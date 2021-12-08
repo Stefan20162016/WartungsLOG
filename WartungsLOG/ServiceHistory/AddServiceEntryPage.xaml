@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shist="clr-namespace:WartungsLOG.ServiceHistory"
+             x:Class="WartungsLOG.ServiceHistory.AddServiceEntryPage"
+             x:DataType="shist:AddServiceEntryViewModel"
+             Title="{Binding Title} "
+             >
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            
+            <Frame BackgroundColor="#2196F3" Padding="4" CornerRadius="0">
+                <Label Text="Neuen Eintrag anlegen:" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"/>
+            </Frame>
+       
+            <StackLayout Orientation="Horizontal">
+            <!--Label Text="{Binding StaticVehicleProperty.ID}"/-->
+            <Label Text="{Binding StaticVehicleProperty.Kennzeichen}"/>
+            </StackLayout>
+
+            <Label Text="Datum:" HorizontalOptions="Center" />
+            <!--Entry Keyboard="Default" Placeholder="11.11.2011"  Text="{Binding DatumProperty, Mode=TwoWay}" IsSpellCheckEnabled="False" 
+                IsTextPredictionEnabled="False" MaxLength="20" /-->
+            <Entry Keyboard="Default" Text="{Binding DatumProperty, Mode=TwoWay}" IsSpellCheckEnabled="False" 
+                IsTextPredictionEnabled="False" MaxLength="20" />
+
+
+                <Label Text="Kilometerstand:" HorizontalOptions="Center"></Label>
+            <Entry Placeholder="123456" Keyboard="Numeric" Text="{Binding KmProperty, Mode=TwoWay}" MaxLength="6"/>
+
+
+            <Label Text="Beschreibung:" HorizontalOptions="Center"/>
+            <!--Entry Placeholder="Beschreibung" IsSpellCheckEnabled="False" Text="{Binding DescriptionProperty, Mode=TwoWay}" HeightRequest="150"  BackgroundColor="AliceBlue"   /-->
+            <Editor Placeholder="Beschreibung" IsSpellCheckEnabled="False" Text="{Binding DescriptionProperty, Mode=TwoWay}" HeightRequest="100"  BackgroundColor="AliceBlue" MaxLength="1000" />
+
+                <Button Text="Diesen Eintrag hinzufügen" Command="{Binding Source={RelativeSource AncestorType={x:Type shist:AddServiceEntryViewModel}}, Path=NavigateToSaveCommand}" BackgroundColor="DeepSkyBlue"/>
+            
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

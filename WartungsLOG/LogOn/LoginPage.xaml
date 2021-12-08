@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fonts="clr-namespace:WartungsLOG.Fonts"
+             xmlns:converter="clr-namespace:WartungsLOG.MyConverter"
+             x:Class="WartungsLOG.LogOn.LoginPage"
+             Title="Login Seite"
+             >
+    <ContentPage.Content>
+
+        <ScrollView HorizontalOptions="Center">
+        
+        <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
+            <!--Label Text=""
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" /-->
+            
+            <Frame BackgroundColor="DeepSkyBlue" Padding="5" CornerRadius="30">
+                <StackLayout>
+                        <Label FontFamily="if"  Text="Willkommen bei Deinem Wartungs-Logbuch" HorizontalTextAlignment="Center" TextColor="White" FontSize="Large"/>
+                    </StackLayout>
+            </Frame>
+            <!--Label Text="" Padding="0" /-->
+
+            <!--Label FontFamily="awe" FontSize="Large" Text="{x:Static fonts:FontAwesome.Save}"/-->
+            <!--Label FontFamily="mat" FontSize="Title"  Text="{x:Static fonts:Material.Dark_mode}"/-->
+
+
+                <Button Text="Einloggen" FontFamily="if" FontSize="Title" x:Name="btnSignInSignOut" Clicked="btnSignInSignOut_Clicked"  VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="Black">
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="awe"  Glyph="{x:Static fonts:FontAwesome.UserCircle }" Color="Black"/>
+                    </Button.ImageSource>
+                </Button>
+
+                <!--Label Padding="0" Text=""/-->
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label FontFamily="awe" FontSize="Title"  Text="{x:Static fonts:FontAwesome.User}"/>
+                <!--Label FontFamily="mat" FontSize="Title"  Text="{x:Static fonts:Material.Camera_alt}"/-->
+
+                    <Label Text="Eingeloggt als: " FontFamily="if" FontSize="Title" />
+                
+            </StackLayout>
+                <Label FontFamily="if" FontSize="Title" x:Name="lblName" HorizontalOptions="Center"/>
+            
+            <!--Label x:Name="lblOID"/-->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label FontFamily="mat" FontSize="Title" Text="{x:Static fonts:Material.Email}"/>
+                <Label Text="Emailadresse:" FontFamily="if" FontSize="Title" />
+                    
+            </StackLayout>
+                <Label FontFamily="if" FontSize="Title" x:Name="lblEmail" HorizontalOptions="Center"/>
+
+
+                <Button FontFamily="if" FontSize="Title" x:Name="btnCallAPI" Text="KFZ auswählen" Clicked="btnGoSelect_Clicked" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="Black" >
+                    <Button.ImageSource>
+                        <FontImageSource FontFamily="mat"  Glyph="{x:Static fonts:Material.Directions_car_filled}" Color="Black"/>
+                    </Button.ImageSource>
+                </Button>
+
+                <!-- Label FontFamily="awe"  Text="{x:Static fonts:FontAwesome.TrashAlt }" TextColor="Black" FontSize="33"></Label-->
+                <!-- Label FontFamily="mat"  Text="{x:Static fonts:Material.Directions_car }" TextColor="Black" FontSize="33"></Label-->
+
+                <StackLayout Spacing="32" Padding="21" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Taschenlampe" FontSize="Medium"/>
+                    <Switch Toggled="Switch_Toggled" Scale="2" />
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
