@@ -16,13 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{D01DCAF3-B2B3-4B73-BFBD-0B0450FB5B7C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{FD982B8A-90AC-4665-92D3-31814523627E}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\WartungsLOGdev\Documentation\Documentation_WartungsLOG.pdf = ..\..\..\Desktop\WartungsLOGdev\Documentation\Documentation_WartungsLOG.pdf
-		..\..\..\Desktop\WartungsLOGdev\Documentation\B2C\stepbystep\app_screenshots\gif1400kib.gif = ..\..\..\Desktop\WartungsLOGdev\Documentation\B2C\stepbystep\app_screenshots\gif1400kib.gif
+		TextFile1.txt = TextFile1.txt
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stepbystep", "stepbystep", "{69E2E3CF-0DDF-4940-9C52-285B49C3EBB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -189,8 +186,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D01DCAF3-B2B3-4B73-BFBD-0B0450FB5B7C} = {673B5A36-D81C-4FCB-AAA4-A83A9A4BBF7C}
-		{69E2E3CF-0DDF-4940-9C52-285B49C3EBB7} = {D01DCAF3-B2B3-4B73-BFBD-0B0450FB5B7C}
+		{FD982B8A-90AC-4665-92D3-31814523627E} = {673B5A36-D81C-4FCB-AAA4-A83A9A4BBF7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A57083-0F56-47EC-B88D-9028B83A8222}
