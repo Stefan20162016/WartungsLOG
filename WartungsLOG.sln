@@ -16,9 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{FD982B8A-90AC-4665-92D3-31814523627E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{2325BFA2-534D-4A1A-B40E-9064A0616C38}"
 	ProjectSection(SolutionItems) = preProject
-		TextFile1.txt = TextFile1.txt
+		Documentation_WartungsLOG.pdf = Documentation_WartungsLOG.pdf
+		gif2400kib.gif = gif2400kib.gif
 	EndProjectSection
 EndProject
 Global
@@ -184,9 +185,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{FD982B8A-90AC-4665-92D3-31814523627E} = {673B5A36-D81C-4FCB-AAA4-A83A9A4BBF7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1A57083-0F56-47EC-B88D-9028B83A8222}
